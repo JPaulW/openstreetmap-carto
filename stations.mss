@@ -4,7 +4,7 @@
     point-placement: interior;
   }
 
-  [railway = 'station'][zoom >= 12] {
+  ['railway' = 'station'][zoom >= 12] {
     point-file: url('symbols/halt.png');
     point-placement: interior;
     [zoom >= 13] {
@@ -32,8 +32,8 @@
     }
     */
   }
-
-  [railway = 'halt'],
+ 
+  ['railway' = 'halt'],
   [railway = 'tram_stop'],
   [aerialway = 'station']::aerialway {
     [zoom >= 13] {
@@ -57,4 +57,25 @@
       }
     }
   }
+
+  ['disused:railway' = 'station'] {
+    [zoom >= 14] {
+      point-file: url('symbols/station_disused.png');
+    }
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-face-name: @book-fonts;
+      text-size: 8;
+      text-fill: grey;
+      text-dy: -8;
+      text-halo-radius: 1;
+      text-wrap-width: 0;
+      text-placement: interior;
+      [zoom >= 15] {
+        text-size: 10;
+        text-dy: -10;
+      }
+    }
+  }
+
 }
