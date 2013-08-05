@@ -233,6 +233,7 @@
 #highway-area-fill {
   [feature = 'highway_living_street'][zoom >= 14] {
     polygon-fill: #ccc;
+    polygon-opacity: 0.75;
   }
 
   [feature = 'highway_residential'],
@@ -248,6 +249,7 @@
   [feature = 'highway_path'] {
     [zoom >= 14] {
       polygon-fill: #ededed;
+      polygon-opacity: 0.75;
     }
   }
 
