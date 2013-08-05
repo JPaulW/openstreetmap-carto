@@ -455,11 +455,12 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway from planet_osm_line where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified') and tunnel in ('yes','true','1') order by z_order) as roads",
+        "table": "(select way,highway, case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service from planet_osm_line where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','service') and tunnel in ('yes','true','1') order by z_order) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "gis",
+        "extent_cache": "auto"
       },
       "id": "tunnels",
       "class": "",

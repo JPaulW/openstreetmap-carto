@@ -378,7 +378,26 @@
     [zoom >= 15] { line-width: 8; }
     [zoom >= 16] { line-width: 11; }
     [zoom >= 17] { line-width: 16; }
+  } 
+
+  [highway = 'service'] {
+    [service = 'INT-normal'] {
+      [zoom >= 14] {
+        line-width: 2.5;
+        line-color: @service-casing;
+        line-dasharray: 4,2;
+      }
+      [zoom >= 16] { line-width: 7; }
+    }
+    [service = 'INT-minor'] {
+      [zoom >= 16] {
+        line-width: 4;
+        line-color: @service-casing;
+        line-dasharray: 4,2;
+      }
+    }
   }
+
 }
 
 #tunnels::fill {
@@ -461,6 +480,29 @@
     [zoom >= 16] { line-width: 9.4; }
     [zoom >= 17] { line-width: 13; }
   }
+
+  [highway = 'service'] {
+    [service = 'INT-normal'] {
+      [zoom >= 13] {
+        line-width: 1;
+        line-color: @residential-tunnel-fill;
+        line-join: round;
+        line-cap: round;
+      }
+      [zoom >= 14] { line-width: 2; }
+      [zoom >= 16] { line-width: 6; }
+    }
+    [service = 'INT-minor'] {
+      [zoom >= 16] {
+        line-width: 3;
+        line-color: @residential-tunnel-fill;
+        line-join: round;
+        line-cap: round;
+      }
+    }
+  }
+
+
 }
 
 #minor-roads-casing::links {
@@ -607,9 +649,9 @@
     }
   }
 
-  /* This needs refactoring! Minor services shouldn't appear at z14
-   * simply because of a tunnel tag. Also rationalise joins and caps
-   */
+  /*
+   * Rationalise joins and caps.
+  */
   [highway = 'service'] {
     [service = 'INT-normal'][tunnel != 'yes'] {
       [zoom >= 14] {
@@ -626,12 +668,6 @@
         line-cap: round;
         line-join: round;
       }
-    }
-    [tunnel = 'yes'][zoom >= 14] {
-      line-color: @service-casing;
-      line-width: 2.5;
-      line-dasharray: 4,2;
-      [zoom >= 16] { line-width: 7; }
     }
   }
 
@@ -915,7 +951,7 @@
     [zoom >= 17] { line-width: @tertiary-width-z17; }
   }
 
-  [feature = 'highway_service'][service = 'INT-normal'][zoom >= 13] {
+  [feature = 'highway_service'][service = 'INT-normal'][tunnel != 'yes'][zoom >= 13] {
     line-width: 1;
     line-color: @residential-casing;
     [zoom >= 14] {
@@ -927,12 +963,13 @@
     [zoom >= 16] { line-width: 6; }
   }
 
-  [feature = 'highway_service'][service = 'INT-minor'][zoom >= 16] {
+  [feature = 'highway_service'][service = 'INT-minor'][tunnel != 'yes'][zoom >= 16] {
     line-width: 3;
     line-color: @residential-fill;
     line-join: round;
     line-cap: round;
   }
+
 
   [feature = 'highway_pedestrian'][zoom >= 13] {
     line-width: 1.5;
