@@ -30,6 +30,7 @@
 @secondary-tunnel-fill: lighten(@secondary-fill, 5%);
 @tertiary-tunnel-fill: lighten(@tertiary-fill, 5%);
 @residential-tunnel-fill: lighten(@residential-fill, 10%);
+@service-tunnel-fill: lighten(@service-fill, 10%);
 
 
 @motorway-width-z12: 2;
@@ -487,7 +488,7 @@
     [service = 'INT-normal'] {
       [zoom >= 13] {
         line-width: 1;
-        line-color: @residential-tunnel-fill;
+        line-color: @service-tunnel-fill;
         line-join: round;
         line-cap: round;
       }
@@ -497,7 +498,7 @@
     [service = 'INT-minor'] {
       [zoom >= 16] {
         line-width: 3;
-        line-color: @residential-tunnel-fill;
+        line-color: @service-tunnel-fill;
         line-join: round;
         line-cap: round;
       }
